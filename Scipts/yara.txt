@@ -1,0 +1,11 @@
+rule sniffdetect
+{
+    meta:
+    description="Detect sniffing capability"
+
+    strings:
+    $sniffLib="wpcap.dll"nocase fullword
+    %sniffUse="pcap_open"nocase
+    condition:
+    $sniffLib or $sniffUse
+}

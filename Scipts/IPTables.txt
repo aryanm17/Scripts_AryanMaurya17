@@ -1,0 +1,12 @@
+----Setting Up IPTABLES Firewall in Linux-----
+
+Simple IP Tables rules for managing traffic from ports and IP addresses.
+
+1) sudo iptables -A INPUT -i lo -j ACCEPT (anything from our system passes through firewall)
+2) sudo iptables -A INPUT -p tcp --dport 443 -j ACCEPT (allows  HTTPS traffic)
+3) sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT (allows SSH traffic)
+4) sudo iptables -A INPUT -s <IP ADDRESS HERE> -j DROP (rejects any trafic from a particular IP)
+5) sudo iptables -A INPUT -m iprange --src-range <IP--START OF RANGE-IP--END OF RANGE> -j REJECT 
+(rejects all trafic from a range of ip addresses)
+6) sudo iptables -A INPUT -s 192.168.0.27 -j ACCEPT ( allow traffic from a particular IP)
+7) sudo iptables -A INPUT -j DROP (drops any traffic from ports that we have not specified).
